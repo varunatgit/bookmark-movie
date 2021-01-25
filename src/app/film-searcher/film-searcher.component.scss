@@ -1,0 +1,50 @@
+.search-block {
+  display: block;
+  position: absolute;
+  padding: 8px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 10;
+
+  .search-form {
+    width: 100%;
+  }
+}
+
+.list-block {
+  display: block;
+  position: absolute;
+  top: 81.5px;
+  right: 0px;
+  bottom: 35px;
+  left: 0px;
+  overflow: auto;
+
+  .error {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: #e06c6c;
+    padding-top: 30px;
+  }
+}
+
+.info-block {
+  display: block;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  text-align: center;
+  padding: 8px;
+  border-top: 1px solid #cecece;
+  color: #505050;
+}
+
+.empty {
+  background: url('../../assets/img/empty.jpg') no-repeat center;
+  background-size: 100% 100%;
+}

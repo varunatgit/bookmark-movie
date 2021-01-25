@@ -1,0 +1,22 @@
+.not-found {
+  display: flex;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background: url('../../assets/img/404.jpg') no-repeat center 100%;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-size: 14em;
+    color: rgba(0, 0, 0, 0.226);
+  }
+
+  button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+}

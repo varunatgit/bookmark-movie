@@ -1,0 +1,39 @@
+<div class="search-block">
+  <mat-form-field class="search-form">
+    <input #searchInput matInput type="text" placeholder="Search" (keyup)="search(searchInput.value)">
+    <mat-hint>Search by Movie Name!</mat-hint>
+    <span matSuffix class="fa fa-lg" [class.fa-search]="!waitForResponse" [ngClass]="{'fa-spinner fa-spin' : waitForResponse}"></span>
+  </mat-form-field>
+</div>
+
+<div class="list-block">
+  <!-- LIST -->
+  <ng-container *ngIf="omdbResponse?.Response === 'True'">
+      <ng-container *ngFor="let film of omdbResponse?.Search">
+        <mat-card>
+          <mat-card-header>
+            <div *ngIf="film.Poster === 'N/A'" mat-card-avatar class="empty"></div>
+            <img *ngIf="film.Poster !== 'N/A'" mat-card-avatar [src]="film.Poster">
+            <mat-card-title><b>{{ film.Title }}</b> {{ film.Type }}</mat-card-title>
+            <mat-card-subtitle>{{ film.Year }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-button color="warn" (click)="addToFavorite(film)">
+              <span class="fa fa-heart fa-lg"></span>
+              Add to bookmarked
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+  </ng-container>
+
+  <!-- ERROR -->
+  <ng-container *ngIf="omdbResponse?.Response === 'False'">
+    <div class="error">{{ omdbResponse?.Error }}</div>
+  </ng-container>
+
+</div>
+
+<div *ngIf="omdbResponse?.Response === 'True'" class="info-block">
+  Show {{ omdbResponse?.Search.length }} of {{ omdbResponse?.totalResults }} films
+</div>

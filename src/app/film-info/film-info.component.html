@@ -1,0 +1,47 @@
+<button mat-raised-button color="accent" routerLink="/films">
+  <span class="fa fa-list fa-lg"></span>
+  Back to list
+</button>
+
+<ng-container *ngIf="omdbResponse">
+  <!-- DATA -->
+  <ng-container *ngIf="omdbResponse?.Response === 'True'">
+    <h2>{{ omdbResponse?.Title }}</h2>
+
+    <mat-grid-list cols="2">
+
+      <mat-grid-tile>
+        <div>
+          <ng-container *ngFor="let key of getFilmKeys()">
+            <p><b>{{ key }}:</b> {{ omdbResponse[key] }}</p>
+          </ng-container>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <img [src]="omdbResponse?.Poster" [alt]="omdbResponse?.Title">
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+  </ng-container>
+
+  <!-- OMDB ERROR -->
+  <ng-container *ngIf="omdbResponse?.Response === 'False'">
+    {{ omdbResponse?.Error }}
+  </ng-container>
+</ng-container>
+
+<!-- LOADING -->
+
+<ng-container *ngIf="!omdbResponse">
+  <div class="loading-box">
+    <ng-container *ngIf="waitForResponse">
+      <mat-spinner></mat-spinner>
+    </ng-container>
+
+    <ng-container *ngIf="!waitForResponse">
+      Error loading data! <a href="javascript:void(0)" (click)="loadFilmInfo()">Retry...</a>
+    </ng-container>
+  </div>
+</ng-container>
