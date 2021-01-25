@@ -2,10 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
 
-# Screenshots
-
-![Films](https://raw.githubusercontent.com/AmeBitto/omdb-api-sample/master/screenshots/films.jpg)
-![Film info](https://raw.githubusercontent.com/AmeBitto/omdb-api-sample/master/screenshots/film-info.jpg)
 
 ## Development server
 
